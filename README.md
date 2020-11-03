@@ -62,3 +62,31 @@ plants <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tid
     ##   red_list_category = col_character()
     ## )
     ## i Use `spec()` for the full column specifications.
+
+## Resumen de especies por país
+
+``` r
+resumen<-plants %>% dplyr::filter(continent=="South America") %>% group_by(country, binomial_name) %>% summarise(n_species=n())
+```
+
+    ## `summarise()` regrouping output by 'country' (override with `.groups` argument)
+
+``` r
+resumen
+```
+
+    ## # A tibble: 83 x 3
+    ## # Groups:   country [9]
+    ##    country   binomial_name                       n_species
+    ##    <chr>     <chr>                                   <int>
+    ##  1 Argentina Senecio leucopeplus                         1
+    ##  2 Bolivia   Flabellidium spinosum                       1
+    ##  3 Brazil    Brugmansia suaveolens                       1
+    ##  4 Brazil    Campomanesia lundiana                       1
+    ##  5 Brazil    Cereus estevesii                            1
+    ##  6 Brazil    Chrysophyllum januariense                   1
+    ##  7 Brazil    Devillea flagelliformis                     1
+    ##  8 Brazil    Discocactus subterraneo-proliferans         1
+    ##  9 Brazil    Gomidesia cambessedeana                     1
+    ## 10 Brazil    Pouteria stenophylla                        1
+    ## # ... with 73 more rows

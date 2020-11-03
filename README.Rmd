@@ -26,4 +26,9 @@ plants <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tid
 
 ```
  
+## Resumen de especies por país
+```{r}
+resumen<-plants %>% dplyr::filter(continent=="South America") %>% group_by(country, binomial_name) %>% summarise(n_species=n())
+resumen
+```
 
